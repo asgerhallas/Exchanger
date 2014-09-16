@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>grensesnitt.Framework</id>
+    <version>1.0.1.0</version>
+    <title>grensesnitt.Framework</title>
+    <authors>Greg Young</authors>
+    <owners>Greg Young</owners>
+    <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>What it does is allows you to specify tests that act upon an interface.</description>
+    <summary>What it does is allows you to specify tests that act upon an interface.</summary>
+    <releaseNotes />
+    <copyright />
+    <language />
+  </metadata>
+</package>

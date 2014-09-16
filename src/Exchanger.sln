@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exchanger", "Exchanger\Exchanger.csproj", "{12D52CDF-46E7-4131-8B7C-E99305998ED2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exchanger.Tests", "Exchanger.Tests\Exchanger.Tests.csproj", "{F2E2AC83-D475-4F96-9E00-B04C75248D51}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12D52CDF-46E7-4131-8B7C-E99305998ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12D52CDF-46E7-4131-8B7C-E99305998ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12D52CDF-46E7-4131-8B7C-E99305998ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12D52CDF-46E7-4131-8B7C-E99305998ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2E2AC83-D475-4F96-9E00-B04C75248D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2E2AC83-D475-4F96-9E00-B04C75248D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2E2AC83-D475-4F96-9E00-B04C75248D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2E2AC83-D475-4F96-9E00-B04C75248D51}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
