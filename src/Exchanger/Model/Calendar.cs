@@ -10,13 +10,30 @@ namespace Exchanger.Model
     public class Calendar : AggregateRoot, 
         IEmit<CalendarItemCreated>,
         IEmit<CalendarItemRemoved>,
-        IEmit<CalendarItemChanged>
+        IEmit<CalendarItemChanged>,
+        IEmit<RemoteAdded>
     {
         readonly List<CalendarItem> items = new List<CalendarItem>();
+        readonly List<Remote> remotes = new List<Remote>();
 
         public IReadOnlyList<CalendarItem> Items
         {
             get { return items; }
+        }
+
+        public IReadOnlyList<Remote> Remotes
+        {
+            get { return remotes; }
+        }
+
+        public void AddRemote(Remote remote)
+        {
+            Emit(new RemoteAdded {Remote = remote});
+        }
+
+        public void Apply(RemoteAdded e)
+        {
+            remotes.Add(e.Remote);
         }
 
         public void Diff(IReadOnlyCollection<CalendarItem> remote)
@@ -49,19 +66,6 @@ namespace Exchanger.Model
             }
         }
 
-        static IEnumerable<CalendarItemChanged> FindChanges(CalendarItem remoteItem, CalendarItem localItem)
-        {
-            if (remoteItem.Id != localItem.Id)
-                throw new InvalidOperationException("Expects events with same id.");
-
-            return from property in typeof(CalendarItem).GetProperties()
-                   where property.Name != "Id"
-                   let sourceValue = property.GetValue(remoteItem)
-                   let targetValue = property.GetValue(localItem)
-                   where !Equals(sourceValue, targetValue)
-                   select new CalendarItemChanged(remoteItem.Id, property.Name, sourceValue);
-        }
-
         public void Apply(CalendarItemCreated @event)
         {
             items.Add(@event.Item);
@@ -78,6 +82,19 @@ namespace Exchanger.Model
             typeof(CalendarItem)
                 .GetProperty(@event.Property)
                 .SetValue(changedItem, @event.NewValue);
+        }
+
+        static IEnumerable<CalendarItemChanged> FindChanges(CalendarItem remoteItem, CalendarItem localItem)
+        {
+            if (remoteItem.Id != localItem.Id)
+                throw new InvalidOperationException("Expects events with same id.");
+
+            return from property in typeof(CalendarItem).GetProperties()
+                   where property.Name != "Id"
+                   let sourceValue = property.GetValue(remoteItem)
+                   let targetValue = property.GetValue(localItem)
+                   where !Equals(sourceValue, targetValue)
+                   select new CalendarItemChanged(remoteItem.Id, property.Name, sourceValue);
         }
 
         class EventIdComparer : IEqualityComparer<CalendarItem>

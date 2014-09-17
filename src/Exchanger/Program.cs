@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using d60.Cirqus;
 
 namespace Exchanger
 {
@@ -9,7 +10,7 @@ namespace Exchanger
         {
             try
             {
-                new Program().Run().Wait();
+                new Program().Run(args).Wait();
             }
             catch (AggregateException ex)
             {
@@ -23,9 +24,11 @@ namespace Exchanger
             Console.ReadKey();
         }
 
-        async Task Run()
+        async Task Run(string[] args)
         {
-
+            //add remote
+            //add remote
+            //sync remotes
         }
     }
 }

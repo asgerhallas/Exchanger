@@ -5,6 +5,7 @@ using d60.Cirqus.Events;
 using d60.Cirqus.TestHelpers;
 using Exchanger.Events;
 using Exchanger.Model;
+using Exchanger.Stores;
 using NodaTime;
 using Shouldly;
 using Xunit;
@@ -139,6 +140,14 @@ namespace Exchanger.Tests.Model
             calendar.Apply(new CalendarItemCreated(calendarItem));
             calendar.Apply(new CalendarItemChanged("test", "Title", "Emil"));
             calendar.Items[0].Title.ShouldBe("Emil");
+        }
+
+        [Fact]
+        public void CanAddRemote()
+        {
+            calendar.AddRemote(new GoogleCalendarRemote());
+
+            unitOfWork.EmittedEvents.Single().ShouldBe(new RemoteAdded());
         }
 
         static IReadOnlyCollection<T> Yield<T>(params T[] items)

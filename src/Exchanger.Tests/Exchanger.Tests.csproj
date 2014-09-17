@@ -69,6 +69,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\RegisterRemoteTests.cs" />
+    <Compile Include="Commands\SynchronizeTests.cs" />
     <Compile Include="Model\CalendarTests.cs" />
     <Compile Include="Stores\StoreTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

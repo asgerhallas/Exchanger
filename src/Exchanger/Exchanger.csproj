@@ -102,8 +102,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Events\RemoteAdded.cs" />
     <Compile Include="Stores\GoogleCalendarRemote.cs" />
-    <Compile Include="Stores\Remote.cs" />
+    <Compile Include="Model\Remote.cs" />
     <Compile Include="Commands\Synchronize.cs" />
     <Compile Include="Model\CalendarItem.cs" />
     <Compile Include="Events\CalendarItemChanged.cs" />

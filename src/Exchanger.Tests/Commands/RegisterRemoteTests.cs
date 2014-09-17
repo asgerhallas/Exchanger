@@ -2,10 +2,10 @@
 
 namespace Exchanger.Tests.Commands
 {
-    public class SynchronizeTests
+    public class RegisterRemoteTests
     {
         [Fact]
-        public void SynchronizesFromRemotes()
+        public void RegistersRemote()
         {
             
         }

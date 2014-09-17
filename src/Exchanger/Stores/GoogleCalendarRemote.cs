@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Exchanger.Model;
 
 namespace Exchanger.Stores
 {
