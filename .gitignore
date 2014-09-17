@@ -17,3 +17,5 @@ bld/
 
 # Roslyn cache directories
 *.ide/
+
+*.secret

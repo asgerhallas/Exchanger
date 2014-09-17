@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -59,7 +60,7 @@ namespace Exchanger.Stores
                 new ClientSecrets
                 {
                     ClientId = "1090817542797-3nf6u64imjooeb3sdhij457rau4417o2.apps.googleusercontent.com",
-                    ClientSecret = "iR8DTAKzidDu6bm52Li4wTdI"
+                    ClientSecret = GetSecret()
                 },
                 new[] {CalendarService.Scope.Calendar},
                 username,
@@ -97,7 +98,6 @@ namespace Exchanger.Stores
         {
             service.Events.Insert(new Event
             {
-                Id = @event.Item.Id,
                 ICalUID = @event.Item.Id,
                 Summary = @event.Item.Title,
                 Description = @event.Item.Note,
@@ -137,6 +137,20 @@ namespace Exchanger.Stores
                     DateTime = dateTime.ToDateTimeUtc(),
                     TimeZone = dateTime.Zone.Id
                 };
+        }
+
+        static string GetSecret()
+        {
+            using (var secretRessource = typeof (GoogleCalendarStore).Assembly.GetManifestResourceStream("googlecalendar.secret"))
+            {
+                if (secretRessource == null)
+                    throw new InvalidOperationException("Missing googlecalendar.secret embedded ressource.");
+
+                using (var reader = new StreamReader(secretRessource))
+                {
+                    return reader.ReadToEnd();
+                }
+            }
         }
 
         public void Dispose()
