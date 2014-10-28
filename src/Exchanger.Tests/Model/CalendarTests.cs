@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using d60.Cirqus.Events;
-using d60.Cirqus.TestHelpers;
+using d60.Cirqus.Testing;
 using Exchanger.Events;
 using Exchanger.Model;
 using Exchanger.Stores;
