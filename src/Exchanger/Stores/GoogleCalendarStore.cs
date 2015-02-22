@@ -112,11 +112,16 @@ namespace Exchanger.Stores
             service.Events.Update(new Event(), calendarId, @event.ItemId).Execute();
         }
 
+        public void Apply(CalendarItemRemoved @event)
+        {
+            throw new NotImplementedException();
+        }
+
         static ZonedDateTime FromGoogleEventDateTime(EventDateTime dateTime, bool isAllDay)
         {
             var instant = isAllDay
                 ? Instant.FromDateTimeUtc(DateTime.SpecifyKind(DateTime.Parse(dateTime.Date), DateTimeKind.Utc))
-                : Instant.FromDateTimeUtc((DateTime) dateTime.DateTime);
+                : Instant.FromDateTimeOffset(dateTime.DateTime.Value);
             
             var timezone = isAllDay
                 ? DateTimeZoneProviders.Tzdb.GetSystemDefault()
@@ -141,7 +146,7 @@ namespace Exchanger.Stores
 
         static string GetSecret()
         {
-            using (var secretRessource = typeof (GoogleCalendarStore).Assembly.GetManifestResourceStream("googlecalendar.secret"))
+            using (var secretRessource = typeof (GoogleCalendarStore).Assembly.GetManifestResourceStream("Exchanger.googlecalendar.secret"))
             {
                 if (secretRessource == null)
                     throw new InvalidOperationException("Missing googlecalendar.secret embedded ressource.");

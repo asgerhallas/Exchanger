@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using d60.Cirqus;
-using d60.Cirqus.Config;
 using d60.Cirqus.Ntfs.Config;
-using d60.Cirqus.Views;
 
 namespace Exchanger
 {
@@ -29,10 +27,10 @@ namespace Exchanger
 
         async Task Run(string[] args)
         {
-            CommandProcessor.With()
+            var processor = CommandProcessor.With()
                 .EventStore(x => x.UseFiles("."))
-                .EventDispatcher(x => x.UseEventDispatcher(new CompositeEventDispatcher()))
                 .Create();
+
 
             //add remote
             //add remote

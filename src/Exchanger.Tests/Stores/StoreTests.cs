@@ -27,6 +27,7 @@ namespace Exchanger.Tests.Stores
         public void CanCreateAndGetEvents()
         {
             store.Apply(new CalendarItemCreated(
+                "hash",
                 new CalendarItem("test1")
                 {
                     Title = "Hente skurpenge",
@@ -49,6 +50,7 @@ namespace Exchanger.Tests.Stores
         public void CanCreateAndGetAllDayEvents()
         {
             store.Apply(new CalendarItemCreated(
+                "hash",
                 new CalendarItem("test1")
                 {
                     IsAllDay = true,

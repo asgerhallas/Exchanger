@@ -9,5 +9,6 @@ namespace Exchanger.Stores
         IEnumerable<CalendarItem> LoadItems(); 
         void Apply(CalendarItemCreated @event);
         void Apply(CalendarItemChanged @event);
+        void Apply(CalendarItemRemoved @event);
     }
 }
